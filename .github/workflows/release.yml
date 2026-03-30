@@ -1,0 +1,63 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+"   # matches e.g. 1.0.0, 1.2.3
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check
+        run: npx tsc --noEmit --skipLibCheck
+
+      - name: Build
+        run: node esbuild.config.mjs production
+
+      # Verify the tag matches manifest.json version
+      - name: Verify version consistency
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          MANIFEST_VERSION=$(node -p "require('./manifest.json').version")
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+
+          echo "Tag:      $TAG"
+          echo "Manifest: $MANIFEST_VERSION"
+          echo "Package:  $PACKAGE_VERSION"
+
+          if [ "$TAG" != "$MANIFEST_VERSION" ]; then
+            echo "::error::Tag ($TAG) does not match manifest.json version ($MANIFEST_VERSION)"
+            exit 1
+          fi
+          if [ "$TAG" != "$PACKAGE_VERSION" ]; then
+            echo "::error::Tag ($TAG) does not match package.json version ($PACKAGE_VERSION)"
+            exit 1
+          fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "v${{ github.ref_name }}"
+          tag_name: ${{ github.ref_name }}
+          generate_release_notes: true
+          files: |
+            main.js
+            manifest.json
+            styles.css

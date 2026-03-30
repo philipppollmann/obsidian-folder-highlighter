@@ -1,0 +1,11 @@
+{
+  "id": "obsidian-folder-highlighter",
+  "name": "Folder Highlighter",
+  "version": "1.0.0",
+  "minAppVersion": "1.0.0",
+  "description": "Highlight folder and file names with inline background colors in the file explorer.",
+  "author": "You",
+  "authorUrl": "",
+  "fundingUrl": "",
+  "isDesktopOnly": false
+}
