@@ -3,8 +3,8 @@
 An [Obsidian](https://obsidian.md) plugin that highlights folder and file names in the file explorer with an **inline background colour** — only the text label is highlighted, not the full row.
 
 ![Obsidian](https://img.shields.io/badge/Obsidian-1.0%2B-7c3aed?logo=obsidian&logoColor=white)
-![License](https://img.shields.io/github/license/A200017104/obsidian-folder-highlighter)
-![Release](https://img.shields.io/github/v/release/A200017104/obsidian-folder-highlighter)
+![License](https://img.shields.io/github/license/philipppollmann/obsidian-folder-highlighter)
+![Release](https://img.shields.io/github/v/release/philipppollmann/obsidian-folder-highlighter)
 
 ---
 
@@ -72,7 +72,7 @@ The *Presets (as code)* textarea shows all presets as JSON — edit directly, pa
 
 ### Manual
 
-1. Download `main.js`, `manifest.json`, and `styles.css` from the [latest release](../../releases/latest)
+1. Download `main.js`, `manifest.json`, and `styles.css` from the [latest release](https://github.com/philipppollmann/obsidian-folder-highlighter/releases/latest)
 2. Copy them into `.obsidian/plugins/obsidian-folder-highlighter/` inside your vault
 3. Reload Obsidian and enable the plugin under **Settings → Community plugins**
 
@@ -80,7 +80,7 @@ The *Presets (as code)* textarea shows all presets as JSON — edit directly, pa
 
 Install [BRAT](https://github.com/TfTHacker/obsidian42-brat) and add:
 ```
-A200017104/obsidian-folder-highlighter
+philipppollmann/obsidian-folder-highlighter
 ```
 
 ---

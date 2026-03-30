@@ -1,6 +1,6 @@
 {
   "name": "obsidian-folder-highlighter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Highlight folder and file names inline in Obsidian's file explorer",
   "main": "main.js",
   "scripts": {
